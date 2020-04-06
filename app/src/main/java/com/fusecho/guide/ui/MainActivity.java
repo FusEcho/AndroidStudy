@@ -1,10 +1,11 @@
-package com.fusecho.guide;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.fusecho.guide.ui;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.fusecho.guide.R;
+import com.fusecho.guide.WorkingBaseActivity;
+
+public class MainActivity extends WorkingBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

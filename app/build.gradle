@@ -1,29 +1,68 @@
 apply plugin: 'com.android.application'
 
+ext {
+    APPLICATION_ID = "com.fusecho.guide"
+    DEBUG_SUFFIX = "debug"
+    VERSION_CODE = 1
+    VERSION_NAME = "0.0.1"
+}
+
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.2"
+
+    compileSdkVersion parent.ext.compileSdkVersion
+    buildToolsVersion parent.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.fusecho.guide"
-        minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId "${APPLICATION_ID}"
+        minSdkVersion parent.ext.minSdkVersion
+        targetSdkVersion parent.ext.versionTarget
+        versionCode Integer.valueOf("${VERSION_CODE}")
+        versionName "${VERSION_NAME}"
     }
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            manifestPlaceholders = [
+                    APPLICATION_ID: "${APPLICATION_ID}",
+                    DEBUG_SUFFIX: ".${DEBUG_SUFFIX}"
+            ]
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            manifestPlaceholders = [
+                    APPLICATION_ID: "${APPLICATION_ID}",
+                    DEBUG_SUFFIX: ""
+            ]
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        mvp {
+            dimension "version"
+            applicationIdSuffix ".mvp"
+
+            manifestPlaceholders = [
+                APP_NAME: "Android"
+            ]
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Android-${variant.versionCode}-${variant.versionName}-${variant.name}.apk"
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation project(path: ':library')
 }
