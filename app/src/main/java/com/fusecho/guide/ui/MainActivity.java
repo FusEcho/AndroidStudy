@@ -3,7 +3,6 @@ package com.fusecho.guide.ui;
 import android.os.Bundle;
 
 import com.fusecho.guide.R;
-import com.fusecho.guide.WorkingBaseActivity;
 
 public class MainActivity extends WorkingBaseActivity {
 
