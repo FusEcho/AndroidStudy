@@ -31,6 +31,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //压缩与加密
+    implementation 'net.lingala.zip4j:zip4j:2.5.2'
+
     api 'com.google.code.gson:gson:2.8.6'
     api 'com.squareup.okio:okio:2.5.0'
+
 }
