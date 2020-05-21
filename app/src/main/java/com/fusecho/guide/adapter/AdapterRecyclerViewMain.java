@@ -1,6 +1,7 @@
 package com.fusecho.guide.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +57,9 @@ public class AdapterRecyclerViewMain extends RecyclerView.Adapter<AdapterRecycle
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // RxActivityTool.skipActivity(context, holder.mItem.getActivity());
+
+                Intent intent = new Intent(mContext, holder.mItem.getActivity());
+                mContext.startActivity(intent);
             }
         });
     }
@@ -80,6 +83,5 @@ public class AdapterRecyclerViewMain extends RecyclerView.Adapter<AdapterRecycle
             ButterKnife.bind(this, view);
         }
     }
-
 
 }

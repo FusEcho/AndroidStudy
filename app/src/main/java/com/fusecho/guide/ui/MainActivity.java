@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData(){
         mData = new ArrayList<>();
-
+        mData.add(new ModelMainItem("常用Dialog展示", R.drawable.circle_dialog, DialogActivity.class));
     }
 
     private void initView(){

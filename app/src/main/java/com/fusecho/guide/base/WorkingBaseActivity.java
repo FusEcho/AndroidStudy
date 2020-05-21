@@ -1,4 +1,4 @@
-package com.fusecho.guide.ui;
+package com.fusecho.guide.base;
 
 import android.content.Context;
 import android.os.Bundle;
